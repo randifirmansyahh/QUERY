@@ -24,12 +24,14 @@ namespace QUERY.Controllers
             return _context.Tb_Roles.Where(x => x.Id == id).FirstOrDefault();
         }
 
+        private List<User> AllUser() => _context.Tb_User.ToList();
+
         // GET: User
         public async Task<IActionResult> Index()
         {
-            var id = "1"; // terserah
-            var cari = CariRolesByID(id);
-            return View(await _context.Tb_User.Where(x => x.Roles == cari).ToListAsync());
+            var data = AllUser();
+            var data2 = CariRolesByID("1"); // terserah
+            return View(await _context.Tb_User.ToListAsync());
         }
 
         // GET: User/Details/5

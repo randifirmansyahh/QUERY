@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QUERY.Data;
 using QUERY.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace QUERY.Controllers
 {
@@ -19,17 +17,27 @@ namespace QUERY.Controllers
             _context = context;
         }
 
-        private User CariUser(string user)
+        private User CariUserByUsername(string user)
         {
             return _context.Tb_User.FirstOrDefault(x => x.Username == user);
         }
 
-        // GET: Blog
-        public async Task<IActionResult> Index()
+        private List<Blog> AllBlogs()
         {
-            string nama = "Randi"; // harusnya cari di cookie login
-            var cari = CariUser(nama); // cari data
-            var data = await _context.Tb_Blog.Where(x => x.User == cari).ToListAsync(); // kondisikan
+            return _context.Tb_Blog.ToList();
+        }
+
+        private List<Blog> BlogsByUsername(string username)
+        {
+            var cari = CariUserByUsername(username); // cari data
+            return _context.Tb_Blog.Where(x => x.User == cari).ToList();
+        }
+
+        // GET: Blog
+        public IActionResult Index()
+        {
+            var data = AllBlogs();
+            var data2 = BlogsByUsername("Randi"); //cari username di cookie
             return View(data);
         }
 
@@ -67,6 +75,7 @@ namespace QUERY.Controllers
             if (ModelState.IsValid)
             {
                 blog.Id = blog.CreateDate.ToString();
+                blog.User = CariUserByUsername("Randi"); // dapetin dari cookie
                 _context.Add(blog);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
