@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using QUERY.Helper;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -38,6 +40,7 @@
                         </li>
                     </ul>
                 </div>
+                <b>@User.GetUsername()</b>
             </div>
         </nav>
     </header>

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QUERY.Data;
+using QUERY.Helper;
 using QUERY.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace QUERY.Controllers
         public IActionResult Index()
         {
             var data = TampilkanSemuaBlog();
-            var data2 = BlogsByUsername("Randi"); //cari username di cookie
+            var data2 = User.GetUsername(); // cari username di cookie helper/DapatkanIdentity.cs
             return View(data);
         }
 
