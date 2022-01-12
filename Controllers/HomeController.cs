@@ -31,8 +31,11 @@ namespace QUERY.Controllers
                     new Roles { Id = "1", Name = "Admin" }, 
                     new Roles { Id = "2", Name = "User" }
                 };
-                _context.Add(Tambah[0]);
-                _context.Add(Tambah[1]);
+
+                foreach(var item in Tambah)
+                {
+                    _context.Add(item);
+                }
                 _context.SaveChangesAsync();
             }
 
