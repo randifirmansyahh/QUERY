@@ -14,9 +14,21 @@ namespace QUERY.Controllers
             return View();
         }
 
-        public IActionResult Masuk(User parameter)
+        [HttpPost]
+        public IActionResult Index(User parameter)
         {
-            return Ok(parameter);
+            return View(parameter);
+        }
+
+        public IActionResult Daftar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Daftar(User parameter)
+        {
+            return View(parameter);
         }
     }
 }

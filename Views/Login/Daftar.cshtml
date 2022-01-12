@@ -1,0 +1,77 @@
+﻿@model User;
+
+@{
+    Layout = "_LayoutLoginAndRegister";
+}
+
+<p class="login-box-msg">Silahkan Daftar</p>
+
+<form asp-action="Daftar" method="post">
+    <div class="input-group mb-3">
+
+        <input asp-for="Username" class="form-control" placeholder="Username" />
+
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-user"></span>
+            </div>
+        </div>
+    </div>
+
+    <span asp-validation-for="Username" class="text-danger"></span>
+
+    <div class="input-group mb-3">
+
+        <input asp-for="Email" class="form-control" placeholder="Email" />
+
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+            </div>
+        </div>
+    </div>
+
+    <span asp-validation-for="Email" class="text-danger"></span>
+
+    <div class="input-group mb-3">
+
+        <input asp-for="Name" class="form-control" placeholder="Name" />
+
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="bi bi-person-circle"></span>
+            </div>
+        </div>
+    </div>
+
+    <span asp-validation-for="Name" class="text-danger"></span>
+
+    <div class="input-group mb-3">
+
+        <input asp-for="Password" class="form-control" placeholder="Password" />
+
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+            </div>
+        </div>
+    </div>
+
+    <span asp-validation-for="Password" class="text-danger"></span>
+    <br />
+
+    <div class="row">
+        <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Daftar</button>
+        </div>
+        <!-- /.col -->
+    </div>
+</form>
+
+<br />
+
+<div class="d-flex flex-column">
+    <p class="mb-1">
+        Sudah punya akun ? <a asp-action="Index">Masuk</a>
+    </p>
+</div>
