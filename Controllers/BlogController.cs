@@ -61,11 +61,12 @@ namespace QUERY.Controllers
         {
             if (ModelState.IsValid)
             {
-                blog.Id = blog.CreateDate.ToString();
-                blog.User = CariUserByUsername("Randi"); // dapetin dari cookie
+                blog.Id = blog.CreateDate.Ticks.ToString("x"); // membuat ID Unik
+
                 _context.Add(blog);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                return RedirectToAction("Index");
             }
             return View(blog);
         }
@@ -77,7 +78,7 @@ namespace QUERY.Controllers
             {
                 return NotFound();
             }
-
+            id = id.ToString();
             var blog = await _context.Tb_Blog.FindAsync(id);
             if (blog == null)
             {
