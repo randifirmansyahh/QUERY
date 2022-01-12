@@ -2,6 +2,12 @@
 
 @{
     Layout = "_LayoutLoginAndRegister";
+
+    @if (!string.IsNullOrEmpty(ViewBag.Pesan))
+    {
+        // Harus pake " agar alert muncul
+        <script>alert("@ViewBag.Pesan");</script>
+    }
 }
 
 <p class="login-box-msg">Silahkan Masuk</p>

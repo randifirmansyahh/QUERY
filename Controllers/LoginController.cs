@@ -56,6 +56,7 @@ namespace QUERY.Controllers
 
                 return Redirect("/Index");
             }
+            ViewBag.Pesan = "Pengguna tidak ditemukan";
             return View(parameter);
         }
 
