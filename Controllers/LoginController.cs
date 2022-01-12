@@ -57,7 +57,7 @@ namespace QUERY.Controllers
                 return Redirect("/Index");
             }
 
-            if (!string.IsNullOrEmpty(parameter.Username) && !string.IsNullOrEmpty(parameter.Username))
+            if (!string.IsNullOrEmpty(parameter.Username) && !string.IsNullOrEmpty(parameter.Password))
             {
                 ViewBag.Pesan = "Pengguna tidak ditemukan";
             }
