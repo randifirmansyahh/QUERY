@@ -28,6 +28,13 @@ namespace QUERY
             {
                 o.UseMySQL(Configuration.GetConnectionString("mysql")); //sesuaikan namanya
             });
+
+            services.AddAuthentication("CookieAuth")
+                .AddCookie("CookieAuth", options =>
+                {
+                    options.LoginPath = "/Login/Index";
+                });
+
             services.AddControllersWithViews();
         }
 
@@ -45,6 +52,8 @@ namespace QUERY
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

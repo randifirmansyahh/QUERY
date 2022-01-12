@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QUERY.Data;
 using QUERY.Models;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace QUERY.Controllers
 {
+    [Authorize]
     public class BlogController : Controller
     {
         private readonly AppDbContext _context;
