@@ -69,5 +69,11 @@ namespace QUERY.Controllers
         {
             return View(parameter);
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return Redirect("/");
+        }
     }
 }
