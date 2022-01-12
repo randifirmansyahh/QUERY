@@ -17,26 +17,10 @@ namespace QUERY.Controllers
             _context = context;
         }
 
-        private User CariUserByUsername(string user)
-        {
-            return _context.Tb_User.FirstOrDefault(x => x.Username == user);
-        }
-
-        private List<Blog> AllBlogs()
-        {
-            return _context.Tb_Blog.ToList();
-        }
-
-        private List<Blog> BlogsByUsername(string username)
-        {
-            var cari = CariUserByUsername(username); // cari data
-            return _context.Tb_Blog.Where(x => x.User == cari).ToList();
-        }
-
         // GET: Blog
         public IActionResult Index()
         {
-            var data = AllBlogs();
+            var data = TampilkanSemuaBlog();
             var data2 = BlogsByUsername("Randi"); //cari username di cookie
             return View(data);
         }
@@ -166,6 +150,22 @@ namespace QUERY.Controllers
         private bool BlogExists(string id)
         {
             return _context.Tb_Blog.Any(e => e.Id == id);
+        }
+
+        private User CariUserByUsername(string user)
+        {
+            return _context.Tb_User.FirstOrDefault(x => x.Username == user);
+        }
+
+        private List<Blog> TampilkanSemuaBlog()
+        {
+            return _context.Tb_Blog.ToList();
+        }
+
+        private List<Blog> BlogsByUsername(string username)
+        {
+            var cari = CariUserByUsername(username); // cari data
+            return _context.Tb_Blog.Where(x => x.User == cari).ToList();
         }
     }
 }
