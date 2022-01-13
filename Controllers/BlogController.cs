@@ -163,7 +163,9 @@ namespace QUERY.Controllers
 
         private List<Blog> TampilkanSemuaBlog()
         {
-            return _context.Tb_Blog.ToList();
+            return _context.Tb_Blog
+                .Include(x=> x.User)
+                .ToList();
         }
 
         private List<Blog> BlogsByUsername(string username)
