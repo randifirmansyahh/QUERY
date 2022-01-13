@@ -15,6 +15,19 @@
     <!-- Link Editor content -->
     <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/AdminLTE3/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/AdminLTE3/dist/css/adminlte.min.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/AdminLTE3/plugins/summernote/summernote-bs4.min.css">
+    <!-- CodeMirror -->
+    <link rel="stylesheet" href="~/AdminLTE3/plugins/codemirror/codemirror.css">
+    <link rel="stylesheet" href="~/AdminLTE3/plugins/codemirror/theme/monokai.css">
+    <!-- SimpleMDE -->
+    <link rel="stylesheet" href="~/AdminLTE3/plugins/simplemde/simplemde.min.css">
 
 </head>
 <body>
@@ -65,7 +78,7 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-4">
             @RenderBody()
         </main>
     </div>
@@ -79,25 +92,28 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
-    <!-- JS editor content -->
-    <!-- Bootstrap core JavaScript-->
-    <script src="~/External/vendor/jquery/jquery.min.js"></script>
-    <script src="~/External/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="~/External/vendor/jquery-easing/jquery.easing.min.js"></script>
-
+    
     <!-- Custom scripts for all pages-->
     <script src="~/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="~/External/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="~/js/demo/chart-area-demo.js"></script>
     <script src="~/js/demo/chart-pie-demo.js"></script>
 
     <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+    <script src="~/AdminLTE3/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/AdminLTE3/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/AdminLTE3/dist/js/adminlte.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/AdminLTE3/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- CodeMirror -->
+    <script src="~/AdminLTE3/plugins/codemirror/codemirror.js"></script>
+    <script src="~/AdminLTE3/plugins/codemirror/mode/css/css.js"></script>
+    <script src="~/AdminLTE3/plugins/codemirror/mode/xml/xml.js"></script>
+    <script src="~/AdminLTE3/plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

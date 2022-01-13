@@ -1,9 +1,5 @@
 ﻿@model QUERY.Models.Blog
 
-@{
-    ViewData["Title"] = "Create";
-}
-
 <h1>Create</h1>
 
 <h4>Blog</h4>
@@ -19,8 +15,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Content" class="control-label"></label>
-                <div id="editor"></div>
-                <textarea class="d-none" id="contentID" asp-for="Content"></textarea>
+                <textarea id="summernote"></textarea>
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -36,26 +31,24 @@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+            <br />
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts{ 
+@section Scripts {
     <script>
-        $(document).ready(function () {
-            var quill = new Quill('#editor', {
-                modules: { toolbar: true },
-                theme: 'snow'
-            });
+        $(function () {
+            // Summernote
+            $('#summernote').summernote()
 
-            quill.on('text-change', function (delta, oldDelta, source) {
-                $("#contentID").val(quill.getText())
-                console.log(quill.getText())
+            // CodeMirror
+            CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+                mode: "htmlmixed",
+                theme: "monokai"
             });
-        });
+        })
     </script>
 }
