@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using QUERY.Data;
 using QUERY.Helper;
 using QUERY.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -62,6 +63,10 @@ namespace QUERY.Controllers
             if (ModelState.IsValid)
             {
                 blog.Id = blog.CreateDate.Ticks.ToString("x"); // membuat ID Unik
+                
+                //Guid g = Guid.NewGuid(); // id unix
+                //blog.Id = g.ToString(); // masukin
+
 
                 _context.Add(blog);
                 await _context.SaveChangesAsync();
