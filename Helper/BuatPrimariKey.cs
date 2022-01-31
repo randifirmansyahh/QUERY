@@ -11,5 +11,11 @@ namespace QUERY.Helper
         {
             return user + parameter.Ticks.ToString("x");
         }
+
+        public static string BuatPrimaryDenganGuild()
+        {
+            Guid buat = Guid.NewGuid();
+            return buat.ToString();
+        }
     }
 }

@@ -70,8 +70,9 @@ namespace QUERY.Controllers
         {
             if (ModelState.IsValid)
             {
-                blog.User = CariUserByUsername(User.GetUsername());
-                blog.Id = BuatPrimariKey.Buat(blog.User.Username, blog.CreateDate); // membuat ID Unik
+                blog.User = CariUserByUsername(User.GetUsername()); // mengisi field user
+                // blog.Id = BuatPrimariKey.Buat(blog.User.Username, blog.CreateDate); // membuat ID Unik
+                blog.Id = BuatPrimariKey.BuatPrimaryDenganGuild();
 
                 _context.Add(blog);
                 await _context.SaveChangesAsync();
