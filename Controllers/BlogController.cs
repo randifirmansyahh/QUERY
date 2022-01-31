@@ -15,7 +15,7 @@ namespace QUERY.Controllers
     public class BlogController : Controller
     {
         private readonly AppDbContext _context;
-
+        
         public BlogController(AppDbContext context)
         {
             _context = context;
@@ -70,11 +70,8 @@ namespace QUERY.Controllers
         {
             if (ModelState.IsValid)
             {
-                blog.Id = blog.CreateDate.Ticks.ToString("x"); // membuat ID Unik
-                
-                //Guid g = Guid.NewGuid(); // id unix
-                //blog.Id = g.ToString(); // masukin
-
+                blog.User = CariUserByUsername(User.GetUsername());
+                blog.Id = BuatPrimariKey.Buat(blog.User.Username, blog.CreateDate); // membuat ID Unik
 
                 _context.Add(blog);
                 await _context.SaveChangesAsync();
