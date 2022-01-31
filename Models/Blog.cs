@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -15,5 +16,20 @@ namespace QUERY.Models
 
         [DisplayName("Author")]
         public User User { get; set; }
+    }
+
+    public class BlogDashboard
+    {
+        public List<Blog> blog { get; set; }
+        public List<User> user { get; set; }
+        public List<Roles> roles { get; set; }
+
+        public BlogDashboard()
+
+        {
+            blog = new List<Blog>();
+            user = new List<User>();
+            roles = new List<Roles>();
+        }
     }
 }

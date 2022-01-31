@@ -24,9 +24,17 @@ namespace QUERY.Controllers
         // GET: Blog
         public IActionResult Index()
         {
-            var data = TampilkanSemuaBlog();
-            var data2 = User.GetUsername(); // cari username di cookie helper/DapatkanIdentity.cs
-            return View(data);
+            //var data = TampilkanSemuaBlog(); // get 1 model
+            
+            var banyakData = new BlogDashboard(); // dari model Blog
+
+            banyakData.blog = TampilkanSemuaBlog();
+            banyakData.user = _context.Tb_User.ToList();
+            banyakData.roles = _context.Tb_Roles.ToList();
+
+            //var data2 = User.GetUsername(); // cari username di cookie helper/DapatkanIdentity.cs
+            
+            return View(banyakData);
         }
 
         // GET: Blog/Details/5
