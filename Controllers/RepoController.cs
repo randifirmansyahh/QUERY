@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using QUERY.Contracts.Services;
 using QUERY.Models;
 using QUERY.Services;
 using System.Collections;
@@ -8,17 +7,26 @@ using System.Threading.Tasks;
 
 namespace QUERY.Controllers
 {
+    [Route("repo")]
     public class RepoController : Controller
     {
-        private readonly INewBlogService _blogService;
-        public RepoController(INewBlogService blogService)
+        private readonly IBlogService _blogService;
+
+        public RepoController(IBlogService blogService)
         {
             _blogService = blogService;
         }
 
-        public async Task<ActionResult<List<Blog>>> GetAllBlogs()
+        [Route("semua")]
+        public async Task<ActionResult<List<Blog>>> TampilkanSemuaBlog()
         {
-            return await _blogService.GetAllBlogAsync();
+            return View("Index", await _blogService.GetAllBlogsAsync());
+        }
+
+        [Route("cari/{id}")]
+        public async Task<ActionResult<Blog>> TampilkanBlogBerdasarkanID(string id)
+        {
+            return await _blogService.GetBlogByIdAsync(id);
         }
     }
 }

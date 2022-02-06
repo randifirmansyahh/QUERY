@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using QUERY.Contracts.Repositories;
 using QUERY.Data;
 using QUERY.Models;
+using QUERY.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,20 +9,24 @@ using System.Threading.Tasks;
 
 namespace QUERY.Repositories
 {
-    public class BlogRepository : Repository<Blog>, IBlogRepository
+    public class BlogRepository : IBlogService
     {
-        public BlogRepository(AppDbContext context) : base(context)
+        private readonly AppDbContext _context;
+        public BlogRepository(AppDbContext context)
         {
-        }
-
-        public async Task<Blog> GetBlogByIdAsync(string id)
-        {
-            return await GetAll().FirstOrDefaultAsync(x => x.Id == id);
+            _context = context;
         }
 
         public async Task<List<Blog>> GetAllBlogsAsync()
         {
-            return await GetAll().ToListAsync();
+            var result = await _context.Tb_Blog.ToListAsync();
+            return result;
+        }
+
+        public async Task<Blog> GetBlogByIdAsync(string id)
+        {
+            var hasil = await _context.Tb_Blog.FirstOrDefaultAsync(x => x.Id == id);
+            return hasil;
         }
     }
 }

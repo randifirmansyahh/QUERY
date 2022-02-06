@@ -4,8 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using QUERY.Contracts.Repositories;
-using QUERY.Contracts.Services;
 using QUERY.Data;
 using QUERY.Repositories;
 using QUERY.Services;
@@ -39,18 +37,9 @@ namespace QUERY
                     options.LoginPath = "/Login/Index";
                 });
 
-            // repository
-            /*services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped<IBlogRepository, BlogRepository>();*/
-            services.AddScoped<IRepositoryContainer, RepositoryContainer>();
-
-            // daftarin 
-            // resha
-            // services.AddScoped<INewBlogService, NewBlogRepository>();
+            // daftarkan
+            services.AddScoped<IBlogService, BlogRepository>();
             
-            // service
-            // services.AddScoped<INewBlogService>();
-
             services.AddControllersWithViews();
         }
 
@@ -77,7 +66,7 @@ namespace QUERY
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Repo}/{action=GetAllBlogs}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
