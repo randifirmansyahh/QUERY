@@ -26,7 +26,7 @@ namespace QUERY.Controllers
         [Route("cari/{id}")]
         public async Task<ActionResult<Blog>> TampilkanBlogBerdasarkanID(string id)
         {
-            return await _blogService.GetBlogByIdAsync(id);
+            return View("Detail", await _blogService.GetBlogByIdAsync(id));
         }
     }
 }
