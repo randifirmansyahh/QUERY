@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using QUERY.Data;
+using QUERY.Repositories;
+using QUERY.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +37,13 @@ namespace QUERY
                     options.LoginPath = "/Login/Index";
                 });
 
+            // repository
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IBlogRepository, BlogRepository>();
+
+            // service
+            services.AddScoped<IBlogService, BlogService>();
+
             services.AddControllersWithViews();
         }
 
@@ -61,7 +70,7 @@ namespace QUERY
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Repo}/{action=GetAllBlogs}/{id?}");
             });
         }
     }
