@@ -1,16 +1,16 @@
 ﻿@model IEnumerable<Blog>
 
-@if (Model.Count() == 0)
-{
-    <h1>
-        Belum ada data :)
-    </h1>
-}
-else
-{
-    foreach (var item in Model)
+    <a asp-action="Buat">Buat Blog baru</a>
+
+    @if (Model.Count() == 0)
     {
-        @item.Id
-        <a asp-action="cari" asp-controller="Repo" asp-route-id="@item.Id">Detail</a>
+        <h1>Belum ada data :) </h1>
     }
-}
+    else
+    {
+        foreach (var item in Model)
+        {
+            @item.Id
+            <a asp-action="cari" asp-controller="Repo" asp-route-id="@item.Id">Detail</a>
+        }
+    }

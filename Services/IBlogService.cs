@@ -9,6 +9,7 @@ namespace QUERY.Services
     public interface IBlogService
     {
         Task<List<Blog>> AmbilSemuaBlogAsync();
+        Task<bool> BuatBlogBaru(string usernamenya, Blog baru);
         Task<Blog> AmbilBlogBerdasarkanIdAsync(string id);
     }
 }

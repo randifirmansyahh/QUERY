@@ -9,7 +9,11 @@ namespace QUERY.Models
     {
         [Key]
         public string Id { get; set; }
+        
+        [Required]
         public string Title { get; set; }
+
+        [Required]
         public string Content { get; set; }
         public DateTime CreateDate { get; set; }
         public bool Status { get; set; }
