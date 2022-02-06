@@ -20,7 +20,9 @@ namespace QUERY.Repositories
 
         public async Task<List<Blog>> AmbilSemuaBlogAsync()
         {
-            var result = await _context.Tb_Blog.ToListAsync();
+            var result = await _context.Tb_Blog
+                                       .Include(x => x.User)
+                                       .ToListAsync();
             return result;
         }
 
@@ -36,15 +38,36 @@ namespace QUERY.Repositories
             return true;
         }
 
+        public async Task<bool> UbahBlogAsync(Blog datanya)
+        {
+            var cari = _context.Tb_Blog.Find(datanya.Id);
+
+            cari.Title = datanya.Title;
+            cari.Content = datanya.Content;
+            cari.Status = datanya.Status;
+
+            _context.Update(cari);
+            await _context.SaveChangesAsync();
+            
+            return true;
+        }
+
         public async Task<Blog> AmbilBlogBerdasarkanIdAsync(string id)
         {
-            var hasil = await _context.Tb_Blog.FirstOrDefaultAsync(x => x.Id == id);
+            var hasil = await _context.Tb_Blog
+                                      .Include(x=>x.User)
+                                      .FirstOrDefaultAsync(x => x.Id == id);
             return hasil;
         }
 
         private User CariUser(string usernamenya)
         {
             return _context.Tb_User.FirstOrDefault(x => x.Username == usernamenya);
+        }
+
+        private Blog CariBlog(string idnya)
+        {
+            return _context.Tb_Blog.FirstOrDefault(x => x.Id == idnya);
         }
     }
 }

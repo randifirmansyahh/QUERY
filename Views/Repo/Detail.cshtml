@@ -8,5 +8,23 @@
 }
 else
 {
-    @Model.Id;
+    <p>Judul : @Model.Title</p>
+
+    <br />
+    <p>Konten : @Model.Content</p>
+
+    <br />
+    <p>Status : @Model.Status</p>
+
+    <br />
+    <p>Penulis : @Model.User.Name</p>
 }
+
+<br />
+<br />
+
+<a asp-action="ubah" asp-route-id="@Model.Id">Ubah</a>
+
+&nbsp;
+
+<a asp-action="hapus" class="text-danger" asp-route-id="@Model.Id">Hapus</a>

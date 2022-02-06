@@ -12,7 +12,7 @@ namespace QUERY.Controllers
     public class RepoController : Controller
     {
         private readonly IBlogService _blog;
-        
+
         public RepoController(IBlogService blog)
         {
             _blog = blog;
@@ -34,9 +34,27 @@ namespace QUERY.Controllers
         {
             if (ModelState.IsValid)
             {
-                string username = User.GetUsername().ToString();
+                string username = User.GetUsername().ToString(); // dari helper
                 await _blog.BuatBlogBaru(username, dariView);
                 return RedirectToAction("semua");
+            }
+            return View(dariView);
+        }
+
+        [Route("ubah/{id}")]
+        public async Task<ActionResult<Blog>> Perbarui(string id)
+        {
+            return View("Ubah", await _blog.AmbilBlogBerdasarkanIdAsync(id));
+        }
+
+        [HttpPost]
+        [Route("ubah")]
+        public async Task<ActionResult<Blog>> Perbarui(Blog dariView)
+        {
+            if (ModelState.IsValid)
+            {
+                await _blog.UbahBlogAsync(dariView);
+                return Redirect("cari/" + dariView.Id);
             }
             return View(dariView);
         }
