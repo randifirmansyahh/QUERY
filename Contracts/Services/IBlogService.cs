@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace QUERY.Services
+namespace QUERY.Contracts.Services
 {
     public interface IBlogService
     {

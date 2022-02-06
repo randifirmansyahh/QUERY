@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 
-namespace QUERY.Repositories
+namespace QUERY.Contracts.Repositories
 {
-    public interface IRepository<TEntity> where TEntity : class, new()
+    public interface IRepository<TEntity> where TEntity : class
     {
         IQueryable<TEntity> GetAll();
 
