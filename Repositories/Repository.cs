@@ -1,4 +1,5 @@
-﻿using QUERY.Data;
+﻿using QUERY.Contracts.Repositories;
+using QUERY.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;

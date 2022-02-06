@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using QUERY.Contracts.Repositories;
 using QUERY.Data;
 using QUERY.Models;
 using System;

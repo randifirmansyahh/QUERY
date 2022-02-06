@@ -1,4 +1,6 @@
-﻿using QUERY.Models;
+﻿using QUERY.Contracts.Repositories;
+using QUERY.Contracts.Services;
+using QUERY.Models;
 using QUERY.Repositories;
 using System;
 using System.Collections.Generic;
@@ -9,26 +11,26 @@ namespace QUERY.Services
 {
     public class BlogService : IBlogService
     {
-        private readonly IBlogRepository _blogRepository;
+        private readonly IRepositoryContainer repo;
 
-        public BlogService(IBlogRepository blogRepository)
+        public BlogService(IRepositoryContainer _repo)
         {
-            _blogRepository = blogRepository;
+            repo = _repo;
         }
 
         public async Task<List<Blog>> GetAllBlogsAsync()
         {
-            return await _blogRepository.GetAllBlogsAsync();
+            return await repo.Blog.GetAllBlogsAsync();
         }
 
         public async Task<Blog> GetBlogByIdAsync(string id)
         {
-            return await _blogRepository.GetBlogByIdAsync(id);
+            return await repo.Blog.GetBlogByIdAsync(id);
         }
 
         public async Task<Blog> AddBlogAsync(Blog newBlog)
         {
-            return await _blogRepository.AddAsync(newBlog);
+            return await repo.Blog.AddAsync(newBlog);
         }
     }
 }

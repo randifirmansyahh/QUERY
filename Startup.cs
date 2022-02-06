@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using QUERY.Contracts.Repositories;
+using QUERY.Contracts.Services;
 using QUERY.Data;
 using QUERY.Repositories;
 using QUERY.Services;
@@ -37,8 +39,14 @@ namespace QUERY
                     options.LoginPath = "/Login/Index";
                 });
 
-            // daftarin
-            services.AddScoped<INewBlogService, NewBlogRepository>();
+            // repository
+            /*services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IBlogRepository, BlogRepository>();*/
+            services.AddScoped<IRepositoryContainer, RepositoryContainer>();
+
+            // daftarin 
+            // resha
+            // services.AddScoped<INewBlogService, NewBlogRepository>();
             
             // service
             // services.AddScoped<INewBlogService>();
