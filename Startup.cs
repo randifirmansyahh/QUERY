@@ -44,8 +44,12 @@ namespace QUERY
             services.AddScoped<IBlogRepository, BlogRepository>();*/
             services.AddScoped<IRepositoryContainer, RepositoryContainer>();
 
+            // daftarin 
+            // resha
+            // services.AddScoped<INewBlogService, NewBlogRepository>();
+            
             // service
-            services.AddScoped<IBlogService, BlogService>();
+            // services.AddScoped<INewBlogService>();
 
             services.AddControllersWithViews();
         }

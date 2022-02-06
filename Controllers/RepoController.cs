@@ -10,15 +10,15 @@ namespace QUERY.Controllers
 {
     public class RepoController : Controller
     {
-        private readonly IBlogService _blogService;
-        public RepoController(IBlogService blogService)
+        private readonly INewBlogService _blogService;
+        public RepoController(INewBlogService blogService)
         {
             _blogService = blogService;
         }
 
         public async Task<ActionResult<List<Blog>>> GetAllBlogs()
         {
-            return await _blogService.GetAllBlogsAsync();
+            return await _blogService.GetAllBlogAsync();
         }
     }
 }
