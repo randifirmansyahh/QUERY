@@ -23,8 +23,12 @@ else
 <br />
 <br />
 
-<a asp-action="ubah" asp-route-id="@Model.Id">Ubah</a>
+<a asp-action="ubah" asp-route-id="@Model.Id" class="bi bi-pencil" style="color:forestgreen"> Ubah</a>
 
 &nbsp;
 
-<a asp-action="hapus" class="text-danger" asp-route-id="@Model.Id">Hapus</a>
+<a asp-action="hapus" asp-route-id="@Model.Id"
+   class="bi bi-trash" title="Keluar" style="color:red"
+   onclick="if (! confirm('Yakin akan menghapus blog ini ?')) { return false; }">
+    Hapus
+</a>

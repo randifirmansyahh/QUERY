@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Blog>
 
-<a asp-action="Buat">Buat Blog baru</a>
+<a asp-action="buat">Buat Blog baru</a>
 
 <br />
 
@@ -12,10 +12,21 @@ else
 {
     foreach (var item in Model)
     {
-        @item.Id
-        <a asp-action="cari" asp-route-id="@item.Id">Detail</a>
-        <a asp-action="ubah" asp-route-id="@item.Id">Ubah</a>
-        <a asp-action="hapus" asp-route-id="@item.Id">Hapus</a>
+        @item.Title
+        <a asp-action="detail" asp-route-id="@item.Id" class="bi bi-search"> 
+            Detail
+        </a>
+        
+        <a asp-action="ubah" asp-route-id="@item.Id" class="bi bi-pencil" 
+           style="color:forestgreen"> Ubah
+        </a>
+        
+        <a asp-action="hapus" asp-route-id="@item.Id"
+           class="bi bi-trash" title="Keluar" style="color:red"
+           onclick="if (! confirm('Yakin akan menghapus blog ini ?')) { return false; }">
+            Hapus
+        </a>
+        
         <br />
     }
 }

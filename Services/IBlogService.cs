@@ -12,5 +12,6 @@ namespace QUERY.Services
         Task<bool> BuatBlogBaru(string usernamenya, Blog baru);
         Task<bool> UbahBlogAsync(Blog dariView);
         Task<Blog> AmbilBlogBerdasarkanIdAsync(string id);
+        Task<bool> HapusBlogAsync(string idnya);
     }
 }

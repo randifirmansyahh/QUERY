@@ -1,6 +1,6 @@
 ﻿@model Blog
 
-<form asp-action="Buat">
+<form asp-action="buat">
     <div class="form-group">
         <label asp-for="Title" class="control-label"></label>
         <input asp-for="Title" class="form-control" />
@@ -19,7 +19,7 @@
         <span asp-validation-for="Status" class="text-danger" />
     </div>
 
-    <input type="submit" value="Tambah" />
+    <input type="submit" value="Tambah" class="btn-primary"/>
 </form>
 
 @section Scripts {

@@ -24,13 +24,15 @@ namespace QUERY.Controllers
             return View("Index", await _blog.AmbilSemuaBlogAsync());
         }
 
+        [Route("buat")]
         public IActionResult Buat()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<ActionResult<Blog>> Buat(Blog dariView)
+        [Route("buat")]
+        public async Task<ActionResult<Blog>> BuatBlog(Blog dariView)
         {
             if (ModelState.IsValid)
             {
@@ -42,27 +44,34 @@ namespace QUERY.Controllers
         }
 
         [Route("ubah/{id}")]
-        public async Task<ActionResult<Blog>> Perbarui(string id)
+        public async Task<ActionResult<Blog>> UbahBlog(string id)
         {
             return View("Ubah", await _blog.AmbilBlogBerdasarkanIdAsync(id));
         }
 
         [HttpPost]
         [Route("ubah")]
-        public async Task<ActionResult<Blog>> Perbarui(Blog dariView)
+        public async Task<ActionResult<Blog>> UbahBlog(Blog dariView)
         {
             if (ModelState.IsValid)
             {
                 await _blog.UbahBlogAsync(dariView);
-                return Redirect("cari/" + dariView.Id);
+                return Redirect("detail/" + dariView.Id);
             }
             return View(dariView);
         }
 
-        [Route("cari/{id}")]
-        public async Task<ActionResult<Blog>> Detail(string id)
+        [Route("detail/{id}")]
+        public async Task<ActionResult<Blog>> DetailBlog(string id)
         {
             return View("Detail", await _blog.AmbilBlogBerdasarkanIdAsync(id));
+        }
+
+        [Route("hapus/{id}")]
+        public async Task<ActionResult> HapusBlog(string id)
+        {
+            await _blog.HapusBlogAsync(id);
+            return RedirectToAction("semua");
         }
     }
 }

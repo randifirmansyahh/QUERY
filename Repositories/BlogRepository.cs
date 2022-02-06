@@ -60,6 +60,16 @@ namespace QUERY.Repositories
             return hasil;
         }
 
+        public async Task<bool> HapusBlogAsync(string idnya)
+        {
+            var cari = _context.Tb_Blog.Find(idnya);
+
+            _context.Remove(cari);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
         private User CariUser(string usernamenya)
         {
             return _context.Tb_User.FirstOrDefault(x => x.Username == usernamenya);
