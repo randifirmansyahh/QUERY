@@ -37,12 +37,11 @@ namespace QUERY
                     options.LoginPath = "/Login/Index";
                 });
 
-            // repository
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped<IBlogRepository, BlogRepository>();
-
+            // daftarin
+            services.AddScoped<INewBlogService, NewBlogRepository>();
+            
             // service
-            services.AddScoped<IBlogService, BlogService>();
+            // services.AddScoped<INewBlogService>();
 
             services.AddControllersWithViews();
         }
