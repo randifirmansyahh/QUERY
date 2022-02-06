@@ -8,7 +8,7 @@ namespace QUERY.Services
 {
     public interface IBlogService
     {
-        Task<List<Blog>> GetAllBlogsAsync();
-        Task<Blog> GetBlogByIdAsync(string id);
+        Task<List<Blog>> AmbilSemuaBlogAsync();
+        Task<Blog> AmbilBlogBerdasarkanIdAsync(string id);
     }
 }

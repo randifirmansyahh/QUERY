@@ -17,13 +17,13 @@ namespace QUERY.Repositories
             _context = context;
         }
 
-        public async Task<List<Blog>> GetAllBlogsAsync()
+        public async Task<List<Blog>> AmbilSemuaBlogAsync()
         {
             var result = await _context.Tb_Blog.ToListAsync();
             return result;
         }
 
-        public async Task<Blog> GetBlogByIdAsync(string id)
+        public async Task<Blog> AmbilBlogBerdasarkanIdAsync(string id)
         {
             var hasil = await _context.Tb_Blog.FirstOrDefaultAsync(x => x.Id == id);
             return hasil;

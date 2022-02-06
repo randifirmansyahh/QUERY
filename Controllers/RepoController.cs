@@ -20,13 +20,13 @@ namespace QUERY.Controllers
         [Route("semua")]
         public async Task<ActionResult<List<Blog>>> TampilkanSemuaBlog()
         {
-            return View("Index", await _blogService.GetAllBlogsAsync());
+            return View("Index", await _blogService.AmbilSemuaBlogAsync());
         }
 
         [Route("cari/{id}")]
         public async Task<ActionResult<Blog>> TampilkanBlogBerdasarkanID(string id)
         {
-            return View("Detail", await _blogService.GetBlogByIdAsync(id));
+            return View("Detail", await _blogService.AmbilBlogBerdasarkanIdAsync(id));
         }
     }
 }
