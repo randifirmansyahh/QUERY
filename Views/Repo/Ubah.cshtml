@@ -6,13 +6,13 @@
 
     <div class="form-group">
         <label asp-for="Title" class="control-label"></label>
-        <input asp-for="Title" class="form-control" value="@Model.Title"/>
+        <input asp-for="Title" class="form-control"/>
         <span asp-validation-for="Title" class="text-danger" />
     </div>
 
     <div class="form-group">
         <label asp-for="Content" class="control-label"></label>
-        <input asp-for="Content" class="form-control" value="@Model.Content"/>
+        <input asp-for="Content" class="form-control"/>
         <span asp-validation-for="Content" class="text-danger" />
     </div>
 
@@ -22,7 +22,7 @@
         <span asp-validation-for="Status" class="text-danger" />
     </div>
 
-    <input type="submit" value="Ubah" class="btn-primary"/>
+    <input type="submit" value="Ubah" class="btn btn-success"/>
 </form>
 
 @section Scripts {

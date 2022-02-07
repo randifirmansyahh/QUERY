@@ -1,5 +1,9 @@
 ﻿@model Blog
 
+<h5 class="bi bi-plus"> Buat blog baru</h5>
+
+<hr />
+
 <form asp-action="buat">
     <div class="form-group">
         <label asp-for="Title" class="control-label"></label>
@@ -19,7 +23,7 @@
         <span asp-validation-for="Status" class="text-danger" />
     </div>
 
-    <input type="submit" value="Tambah" class="btn-primary"/>
+    <input type="submit" value="Tambah" class="btn btn-primary" />
 </form>
 
 @section Scripts {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using QUERY.Helper;
 using QUERY.Models;
 using QUERY.Services;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace QUERY.Controllers
 {
+    [Authorize]
     [Route("repo")]
     public class RepoController : Controller
     {
@@ -40,7 +42,7 @@ namespace QUERY.Controllers
                 await _blog.BuatBlogBaru(username, dariView);
                 return RedirectToAction("semua");
             }
-            return View(dariView);
+            return View("Buat", dariView);
         }
 
         [Route("ubah/{id}")]
