@@ -5,8 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using QUERY.Data;
-using QUERY.Repositories;
-using QUERY.Services;
+using QUERY.Repositories.BlogRepository;
+using QUERY.Services.BlogService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,9 +37,13 @@ namespace QUERY
                     options.LoginPath = "/Login/Index";
                 });
 
-            // daftarkan
-            services.AddScoped<IBlogService, BlogRepository>();
-            
+            // daftarkan repo dan service disini
+            // repository
+            services.AddScoped<IBlogRepository,BlogRepository>();
+
+            // service
+            services.AddScoped<IBlogService, BlogService>();
+
             services.AddControllersWithViews();
         }
 

@@ -2,8 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using QUERY.Helper;
 using QUERY.Models;
-using QUERY.Services;
-using System.Collections;
+using QUERY.Services.BlogService;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
