@@ -47,11 +47,11 @@ namespace QUERY.Controllers
 
                 if (cariUser.Roles.Id == "1")
                 {
-                    return Redirect("/Blog");
+                    return Redirect("/Admin/Home");
                 }
                 else if (cariUser.Roles.Id == "2")
                 {
-                    return Redirect("/Privacy");
+                    return Redirect("/User/Home");
                 }
 
                 return Redirect("/Index");
