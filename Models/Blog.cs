@@ -18,6 +18,8 @@ namespace QUERY.Models
         public DateTime CreateDate { get; set; }
         public bool Status { get; set; }
 
+        public string Image { get; set; }
+
         [DisplayName("Author")]
         public User User { get; set; }
     }

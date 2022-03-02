@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QUERY.Data;
 using QUERY.Helper;
 using QUERY.Models;
+using QUERY.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +17,12 @@ namespace QUERY.Controllers
     public class BlogController : Controller
     {
         private readonly AppDbContext _context;
-        
-        public BlogController(AppDbContext context)
+        private readonly FileService _file;
+
+        public BlogController(AppDbContext context, FileService f)
         {
             _context = context;
+            _file = f;
         }
 
         // GET: Blog
@@ -66,13 +70,13 @@ namespace QUERY.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Title,Content,CreateDate,Status")] Blog blog)
+        public async Task<IActionResult> Create(Blog blog, IFormFile Image)
         {
             if (ModelState.IsValid)
             {
-                blog.User = CariUserByUsername(User.GetUsername()); // mengisi field user
-                // blog.Id = BuatPrimariKey.Buat(blog.User.Username, blog.CreateDate); // membuat ID Unik
                 blog.Id = BuatPrimariKey.BuatPrimaryDenganGuild();
+                blog.User = CariUserByUsername(User.GetUsername()); // mengisi field user
+                blog.Image = await _file.SimpanFile(Image);
 
                 _context.Add(blog);
                 await _context.SaveChangesAsync();

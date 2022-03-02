@@ -48,7 +48,10 @@ namespace QUERY
 
             // daftarkan emailService
             services.AddTransient<EmailService>();
-            
+
+            // daftarkan fileService
+            services.AddTransient<FileService>();
+
             // ambil data dari appsetting.json, dan set datanya di Models/Email
             services.Configure<Email>(Configuration.GetSection("AturEmail"));
 
