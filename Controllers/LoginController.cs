@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QUERY.Data;
+using QUERY.Helper;
 using QUERY.Models;
+using QUERY.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +16,13 @@ namespace QUERY.Controllers
     public class LoginController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly EmailService _email;
+        private static int _OTP;
 
-        public LoginController(AppDbContext context)
+        public LoginController(AppDbContext context, EmailService e)
         {
             _context = context;
+            _email = e;
         }
 
         public IActionResult Index()
@@ -71,8 +76,19 @@ namespace QUERY.Controllers
         }
 
         [HttpPost]
-        public IActionResult Daftar(User parameter)
+        public IActionResult Daftar(User parameter, int otp)
         {
+            if (otp == _OTP)
+            {
+                Roles cariRoles = _context.Tb_Roles.FirstOrDefault(x => x.Id == "2");
+
+                parameter.Roles = cariRoles;
+
+                _context.Tb_User.Add(parameter);
+                _context.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
             return View(parameter);
         }
 
@@ -80,6 +96,37 @@ namespace QUERY.Controllers
         {
             await HttpContext.SignOutAsync();
             return Redirect("/");
+        }
+
+        [HttpPost]
+        public string KirimEmailOTP(string emailTujuan)
+        {
+            // cari email ke database
+            var cariEmail = _context.Tb_User.FirstOrDefault(x => x.Email == emailTujuan);
+
+            // pengecekan email
+            // != null berarti email ditemukan
+            if (cariEmail != null) return "Email tersebut sudah digunakan";
+
+            _OTP = BanyakBantuan.BuatOTP(); // dari helper, dan memasukan ke variable _OTP diatas
+
+            // mengisi email
+            string subjeknya = "Konfirmasi email untuk daftar akun";
+            // bisa diisi html seperti img, a href, button, dll
+            string isiEmailnya =
+                "<h1>Berikut OTP anda <i style='color: red;'>"
+                + _OTP.ToString()
+                + "</i></h1>"
+                + "<a href='mailto:dotnetlanjutan@gmail.com?subject=Bantuan&body=Halo'>Bantuan</a>";
+
+            // dari services/EmailService.cs
+            bool cek = _email.KirimEmail(emailTujuan, subjeknya, isiEmailnya); // return nya true atau false
+
+            // cek jika true
+            if (cek) return "Kode OTP berhasil dikirimkan ke " + emailTujuan;
+
+            // jika false
+            return "Email " + emailTujuan + " tidak ditemukan";
         }
     }
 }

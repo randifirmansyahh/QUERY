@@ -8,56 +8,51 @@
 
 <form asp-action="Daftar" method="post">
     <div class="input-group mb-3">
-
         <input asp-for="Username" class="form-control" placeholder="Username" />
-
         <div class="input-group-append">
             <div class="input-group-text">
                 <span class="fas fa-user"></span>
             </div>
         </div>
     </div>
-
     <span asp-validation-for="Username" class="text-danger"></span>
-
     <div class="input-group mb-3">
-
         <input asp-for="Email" class="form-control" placeholder="Email" />
-
         <div class="input-group-append">
             <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
             </div>
         </div>
     </div>
-
     <span asp-validation-for="Email" class="text-danger"></span>
-
     <div class="input-group mb-3">
-
         <input asp-for="Name" class="form-control" placeholder="Name" />
-
         <div class="input-group-append">
             <div class="input-group-text">
                 <span class="bi bi-person-circle"></span>
             </div>
         </div>
     </div>
-
     <span asp-validation-for="Name" class="text-danger"></span>
-
     <div class="input-group mb-3">
-
         <input asp-for="Password" class="form-control" placeholder="Password" />
-
         <div class="input-group-append">
             <div class="input-group-text">
                 <span class="fas fa-lock"></span>
             </div>
         </div>
     </div>
-
     <span asp-validation-for="Password" class="text-danger"></span>
+
+    <div class="input-group mb-3">
+        <input type="text" name="otp" class="form-control" placeholder="Masukan OTP" required />
+        <div class="d-flex justify-content-end mb-4">
+            <button type="button" id="email-btn" class="btn btn-success">
+                Kirim Email
+            </button>
+        </div>
+    </div>
+
     <br />
 
     <div class="row">
@@ -75,3 +70,31 @@
         Sudah punya akun ? <a asp-action="Index">Masuk</a>
     </p>
 </div>
+
+@section Scripts{
+    <script>
+
+        let ambilNilai = () => {
+            // #Email artinya id pada <input asp-for="Email"
+            return $("#Email").val();
+        }
+
+        $(document).ready(function () {
+            $("#email-btn").click(function (e) {
+
+                alert("Sedang mengirimkan email, Mohon tunggu")
+
+                // method post
+                // NamaController/NamaFunction
+                $.post("/Login/KirimEmailOTP",
+                    {
+                        // harus sama dengan parameter di fungsi KirimEmailOTP
+                        emailTujuan : ambilNilai()
+                    },
+                    function (returnya) {
+                        alert(returnya)
+                    });
+            })
+        })
+    </script>
+}

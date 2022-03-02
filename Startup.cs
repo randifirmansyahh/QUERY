@@ -5,7 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using QUERY.Data;
+using QUERY.Models;
 using QUERY.Repositories.BlogRepository;
+using QUERY.Services;
 using QUERY.Services.BlogService;
 using System;
 using System.Collections.Generic;
@@ -43,6 +45,12 @@ namespace QUERY
 
             // service
             services.AddScoped<IBlogService, BlogService>();
+
+            // daftarkan emailService
+            services.AddTransient<EmailService>();
+            
+            // ambil data dari appsetting.json, dan set datanya di Models/Email
+            services.Configure<Email>(Configuration.GetSection("AturEmail"));
 
             services.AddControllersWithViews();
         }
