@@ -14,6 +14,7 @@
 
 <b>Data Blog</b>
 
+
 <table class="table" id="tb-datatable">
     <thead>
         <tr>
@@ -79,7 +80,14 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            $('#tb-datatable').dataTable();
+            $('#tb-datatable').DataTable(
+                {
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'print',
+                    ]
+                }
+            );
         });
     </script>
 }
