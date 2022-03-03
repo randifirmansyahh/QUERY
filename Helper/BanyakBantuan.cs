@@ -8,7 +8,7 @@ namespace QUERY.Helper
 {
     public class BanyakBantuan
     {
-        public static int BuatOTP()
+        public int BuatOTP()
         {
             // agar nilainya teracak terus
             Random mulai = new Random();
@@ -18,7 +18,7 @@ namespace QUERY.Helper
             return nilainya;
         }
 
-        public static Object BuatResponAPI(int status, string message, Object data)
+        public Object BuatResponAPI(int status, string message, Object data)
         {
             return new
             {
@@ -26,6 +26,44 @@ namespace QUERY.Helper
                 message,
                 data
             };
+        }
+
+
+        // API
+        public int CodeOk = 200;
+
+        public int CodeBadRequest = 400;
+
+        public int CodeInternalServerError = 500;
+
+        public string PesanGetSukses(string apa)
+        {
+            return "Berhasil ambil data " + apa;
+        }
+
+        public string PesanTambahSukses(string apa)
+        {
+            return "Berhasil menambah data " + apa;
+        }
+
+        public string PesanUbahSukses(string apa)
+        {
+            return "Berhasil ubah data " + apa;
+        }
+
+        public string PesanHapusSukses(string apa)
+        {
+            return "Berhasil hapus data " + apa;
+        }
+
+        public string PesanTidakDitemukan(string apa)
+        {
+            return "Data " + apa + " tidak ditemukan";
+        }
+
+        public string PesanInputanSalah(string apa)
+        {
+            return "Inputan untuk data " + apa + " salah";
         }
     }
 }

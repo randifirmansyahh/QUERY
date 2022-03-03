@@ -108,7 +108,8 @@ namespace QUERY.Controllers
             // != null berarti email ditemukan
             if (cariEmail != null) return "Email tersebut sudah digunakan";
 
-            _OTP = BanyakBantuan.BuatOTP(); // dari helper, dan memasukan ke variable _OTP diatas
+            BanyakBantuan _bantu = new();
+            _OTP = _bantu.BuatOTP(); // dari helper, dan memasukan ke variable _OTP diatas
 
             // mengisi email
             string subjeknya = "Konfirmasi email untuk daftar akun";

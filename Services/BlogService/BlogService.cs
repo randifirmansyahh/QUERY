@@ -1,4 +1,5 @@
-﻿using QUERY.Helper;
+﻿using Microsoft.AspNetCore.Http;
+using QUERY.Helper;
 using QUERY.Models;
 using QUERY.Repositories.BlogRepository;
 using System;
@@ -11,45 +12,90 @@ namespace QUERY.Services.BlogService
     public class BlogService : IBlogService
     {
         private readonly IBlogRepository _blogRepo;
-        public BlogService(IBlogRepository blogRepo)
+        private readonly FileService _file;
+
+        public BlogService(IBlogRepository blogRepo, FileService f)
         {
             _blogRepo = blogRepo;
+            _file = f;
         }
 
-        public async Task<Blog> AmbilBlogBerdasarkanIdAsync(string id)
+        public Blog AmbilBlogBerdasarkanId(string id)
         {
-            return await _blogRepo.AmbilBlogBerdasarkanIdAsync(id);
+            return _blogRepo.AmbilBlogBerdasarkanIdAsync(id).Result;
         }
 
-        public async Task<List<Blog>> AmbilSemuaBlogAsync()
+        public List<Blog> AmbilSemuaBlog()
         {
-            return await _blogRepo.AmbilSemuaBlogAsync();
+            return _blogRepo.AmbilSemuaBlogAsync().Result;
         }
 
-        public async Task<bool> BuatBlogBaru(string usernamenya, Blog baru)
+        public bool BuatBlogBaru(string usernamenya, Blog baru, IFormFile Image)
         {
             baru.Id = BuatPrimariKey.BuatPrimaryDenganGuild();
             baru.CreateDate = DateTime.Now;
-            baru.User = await _blogRepo.CariUserAsync(usernamenya);
+            baru.User = _blogRepo.CariUserAsync(usernamenya).Result;
+            baru.Image = _file.SimpanFile(Image).Result;
 
-            return await _blogRepo.BuatBlogBaruAsync(baru);
+            return _blogRepo.BuatBlogBaruAsync(baru).Result;
         }
 
-        public async Task<bool> HapusBlogAsync(string idnya)
+        public bool HapusBlog(string idnya)
         {
-            var cari = await _blogRepo.CariBlogAsync(idnya);
-            return await _blogRepo.HapusBlogAsync(cari);
+            var cari = _blogRepo.CariBlogAsync(idnya).Result;
+            return _blogRepo.HapusBlogAsync(cari).Result;
         }
 
-        public async Task<bool> UbahBlogAsync(Blog dariView)
+        public bool UbahBlog(Blog dariView, IFormFile Image)
         {
-            var cari = await _blogRepo.CariBlogAsync(dariView.Id);
+            var cari = _blogRepo.CariBlogAsync(dariView.Id).Result;
 
-            cari.Title = dariView.Title;
-            cari.Content = dariView.Content;
-            cari.Status = dariView.Status;
+            if (cari != null)
+            {
+                // dinamis
+                cari.Title = dariView.Title;
+                cari.Content = dariView.Content;
+                cari.Status = dariView.Status;
 
-            return await _blogRepo.UbahBlogAsync(cari);
+                // statis
+                cari.CreateDate = cari.CreateDate;
+                cari.User = cari.User;
+
+                // cek
+                if (Image != null) cari.Image = _file.SimpanFile(Image).Result;
+                else cari.Image = cari.Image;
+
+                return _blogRepo.UbahBlogAsync(cari).Result;
+            }
+            return false;
         }
+
+
+
+
+        // User
+        public List<User> AmbilSemuaUser()
+        {
+            return _blogRepo.AmbilSemuaUserAsync().Result;
+        }
+
+        public User AmbilUserByUsername(string usernamenya)
+        {
+            return _blogRepo.AmbilUserByUsernameAsync(usernamenya).Result;
+        }
+
+
+
+        // Roles
+        public List<Roles> AmbilSemuaRoles()
+        {
+            return _blogRepo.AmbilSemuaRolesAsync().Result;
+        }
+
+        public Roles AmbilRolesById(string idnya)
+        {
+            return _blogRepo.AmbilRolesByIdAsync(idnya).Result;
+        }
+
     }
 }

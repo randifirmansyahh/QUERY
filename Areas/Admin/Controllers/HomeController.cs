@@ -18,182 +18,90 @@ namespace QUERY.Areas.Admin.Controllers
     [Area("Admin")]
     public class HomeController : Controller
     {
-        private readonly AppDbContext _context;
-        private readonly FileService _file;
+        private readonly IBlogService _service;
 
-        public HomeController(AppDbContext context, FileService f)
+        public HomeController(IBlogService b)
         {
-            _context = context;
-            _file = f;
+            _service = b;
         }
 
-        // GET: Blog
         public IActionResult Index()
         {
-            //var data = TampilkanSemuaBlog(); // get 1 model
-
             var banyakData = new BlogDashboard(); // dari model Blog
 
-            banyakData.blog = TampilkanSemuaBlog();
-            banyakData.user = _context.Tb_User.ToList();
-            banyakData.roles = _context.Tb_Roles.ToList();
-
-            //var data2 = User.GetUsername(); // cari username di cookie helper/DapatkanIdentity.cs
+            banyakData.blog = _service.AmbilSemuaBlog();
+            banyakData.user = _service.AmbilSemuaUser();
+            banyakData.roles = _service.AmbilSemuaRoles();
 
             return View(banyakData);
         }
 
-        // GET: Blog/Details/5
-        public async Task<IActionResult> Details(string id)
+        public IActionResult Details(string id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            Blog cari = _service.AmbilBlogBerdasarkanId(id);
 
-            var blog = await _context.Tb_Blog
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (blog == null)
+            if (cari != null)
             {
-                return NotFound();
+                return View(cari);
             }
-
-            return View(blog);
+            return NotFound();
         }
 
-        // GET: Blog/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Blog/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Blog blog, IFormFile Image)
+        public IActionResult Create(Blog blog, IFormFile Image)
         {
             if (ModelState.IsValid)
             {
-                blog.Id = BuatPrimariKey.BuatPrimaryDenganGuild();
-                blog.User = CariUserByUsername(User.GetUsername()); // mengisi field user
-                blog.Image = await _file.SimpanFile(Image);
-                
-                _context.Add(blog);
-                await _context.SaveChangesAsync();
+                _service.BuatBlogBaru(User.GetUsername(), blog, Image);
+                return Redirect("/Admin/Home/Details/" + blog.Id);
+            }
+            return View(blog);
+        }
 
+        public IActionResult Edit(string id)
+        {
+            var cari = _service.AmbilBlogBerdasarkanId(id);
+
+            if (cari != null)
+            {
+                return View(cari);
+            }
+            return NotFound();
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Blog blog, IFormFile Foto)
+        {
+            if (ModelState.IsValid)
+            {
+                var cari = _service.AmbilBlogBerdasarkanId(blog.Id);
+
+                if (cari != null)
+                {
+                    _service.UbahBlog(blog, Foto);
+
+                    return Redirect("/Admin/Home/Details/" + blog.Id);
+                }
+                return NotFound();
+            }
+            return View(blog);
+        }
+
+        public IActionResult Delete(string id)
+        {
+            var cari = _service.AmbilBlogBerdasarkanId(id);
+
+            if (cari != null)
+            {
+                _service.HapusBlog(id);
                 return RedirectToAction("Index");
             }
-            return View(blog);
-        }
-
-        // GET: Blog/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            id = id.ToString();
-            var blog = await _context.Tb_Blog.FindAsync(id);
-            if (blog == null)
-            {
-                return NotFound();
-            }
-            return View(blog);
-        }
-
-        // POST: Blog/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Blog blog, IFormFile Foto)
-        {
-            if (blog.Id==null)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    if(Foto != null)
-                    {
-                        blog.Image = await _file.SimpanFile(Foto);
-                    }
-
-                    _context.Update(blog);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!BlogExists(blog.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(blog);
-        }
-
-        // GET: Blog/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var blog = await _context.Tb_Blog
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (blog == null)
-            {
-                return NotFound();
-            }
-
-            return View(blog);
-        }
-
-        // POST: Blog/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            var blog = await _context.Tb_Blog.FindAsync(id);
-            _context.Tb_Blog.Remove(blog);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool BlogExists(string id)
-        {
-            return _context.Tb_Blog.Any(e => e.Id == id);
-        }
-
-        private Models.User CariUserByUsername(string user)
-        {
-            return _context.Tb_User.FirstOrDefault(x => x.Username == user);
-        }
-
-        private List<Blog> TampilkanSemuaBlog()
-        {
-            return _context.Tb_Blog
-                .Include(x => x.User)
-                .ToList();
-        }
-
-        private List<Blog> BlogsByUsername(string username)
-        {
-            var cari = CariUserByUsername(username); // cari data
-            return _context.Tb_Blog.Where(x => x.User == cari).ToList();
+            return NotFound();
         }
     }
 }

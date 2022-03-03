@@ -16,12 +16,12 @@ namespace QUERY.Repositories.BlogRepository
             _context = context;
         }
 
+        // ----------------------------------------------------------------------------
+        // ------------------------------- BLOG ---------------------------------------
+        // ----------------------------------------------------------------------------
         public async Task<List<Blog>> AmbilSemuaBlogAsync()
         {
-            var result = await _context.Tb_Blog
-                                       .Include(x => x.User)
-                                       .ToListAsync();
-            return result;
+            return await _context.Tb_Blog.Include(x => x.User).ToListAsync();
         }
 
         public async Task<bool> BuatBlogBaruAsync(Blog baru)
@@ -42,10 +42,7 @@ namespace QUERY.Repositories.BlogRepository
 
         public async Task<Blog> AmbilBlogBerdasarkanIdAsync(string id)
         {
-            var hasil = await _context.Tb_Blog
-                                      .Include(x => x.User)
-                                      .FirstOrDefaultAsync(x => x.Id == id);
-            return hasil;
+            return await _context.Tb_Blog.Include(x => x.User).Include(x => x.User.Roles).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<bool> HapusBlogAsync(Blog datanya)
@@ -64,6 +61,39 @@ namespace QUERY.Repositories.BlogRepository
         public async Task<Blog> CariBlogAsync(string idnya)
         {
             return await _context.Tb_Blog.FirstOrDefaultAsync(x => x.Id == idnya);
+        }
+
+
+
+        // ----------------------------------------------------------------------------
+        // ------------------------------- USER ---------------------------------------
+        // ----------------------------------------------------------------------------
+
+        public async Task<List<User>> AmbilSemuaUserAsync()
+        {
+            return await _context.Tb_User.Include(x => x.Roles).ToListAsync();
+        }
+
+        public async Task<User> AmbilUserByUsernameAsync(string usernamenya)
+        {
+            return await _context.Tb_User.FindAsync(usernamenya);
+        }
+
+
+
+
+        // ----------------------------------------------------------------------------
+        // ------------------------------- ROLES --------------------------------------
+        // ----------------------------------------------------------------------------
+
+        public async Task<List<Roles>> AmbilSemuaRolesAsync()
+        {
+            return await _context.Tb_Roles.ToListAsync();
+        }
+
+        public async Task<Roles> AmbilRolesByIdAsync(string idnya)
+        {
+            return await _context.Tb_Roles.FindAsync(idnya);
         }
     }
 }
