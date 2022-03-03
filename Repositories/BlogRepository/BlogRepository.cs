@@ -21,7 +21,7 @@ namespace QUERY.Repositories.BlogRepository
         // ----------------------------------------------------------------------------
         public async Task<List<Blog>> AmbilSemuaBlogAsync()
         {
-            return await _context.Tb_Blog.Include(x => x.User).Include(x => x.User.Roles).ToListAsync();
+            return await _context.Tb_Blog.Include(x => x.User.Roles).ToListAsync();
         }
 
         public async Task<bool> BuatBlogBaruAsync(Blog baru)
@@ -42,7 +42,7 @@ namespace QUERY.Repositories.BlogRepository
 
         public async Task<Blog> AmbilBlogBerdasarkanIdAsync(string id)
         {
-            return await _context.Tb_Blog.Include(x => x.User).Include(x => x.User.Roles).FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Tb_Blog.Include(x => x.User.Roles).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<bool> HapusBlogAsync(Blog datanya)
