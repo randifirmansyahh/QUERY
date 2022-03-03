@@ -1,0 +1,76 @@
+﻿@model ContohModelUntukValidasi
+
+<div class="row">
+    <div class="card-body">
+        <form asp-action="UntukFormValidasi">
+            <div class="form-group">
+                <label asp-for="MaksimalKata" class="control-label"></label>
+                <input asp-for="MaksimalKata" class="form-control" />
+                <span asp-validation-for="MaksimalKata" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsiHarusSesuai" class="control-label"></label>
+                <input asp-for="IsiHarusSesuai" class="form-control" />
+                <span asp-validation-for="IsiHarusSesuai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RangeAngka" class="control-label"></label>
+                <input asp-for="RangeAngka" class="form-control" />
+                <span asp-validation-for="RangeAngka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValidasiEmail" class="control-label"></label>
+                <input asp-for="ValidasiEmail" class="form-control" />
+                <span asp-validation-for="ValidasiEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HanyaAngka" class="control-label"></label>
+                <input asp-for="HanyaAngka" class="form-control" />
+                <span asp-validation-for="HanyaAngka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HurufKecilAja" class="control-label"></label>
+                <input asp-for="HurufKecilAja" class="form-control" />
+                <span asp-validation-for="HurufKecilAja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HurufAja" class="control-label"></label>
+                <input asp-for="HurufAja" class="form-control" />
+                <span asp-validation-for="HurufAja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomorHp" class="control-label"></label>
+                <input asp-for="NomorHp" class="form-control" />
+                <span asp-validation-for="NomorHp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bandingan1" class="control-label"></label>
+                <input asp-for="Bandingan1" class="form-control" />
+                <span asp-validation-for="Bandingan1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bandingan2" class="control-label"></label>
+                <input asp-for="Bandingan2" class="form-control" />
+                <span asp-validation-for="Bandingan2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Url" class="control-label"></label>
+                <input asp-for="Url" class="form-control" />
+                <span asp-validation-for="Url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdaStripnya" class="control-label"></label>
+                <input asp-for="AdaStripnya" class="form-control" />
+                <span asp-validation-for="AdaStripnya" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
