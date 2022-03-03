@@ -21,7 +21,7 @@ namespace QUERY.Repositories.BlogRepository
         // ----------------------------------------------------------------------------
         public async Task<List<Blog>> AmbilSemuaBlogAsync()
         {
-            return await _context.Tb_Blog.Include(x => x.User).ToListAsync();
+            return await _context.Tb_Blog.Include(x => x.User).Include(x => x.User.Roles).ToListAsync();
         }
 
         public async Task<bool> BuatBlogBaruAsync(Blog baru)
