@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +16,16 @@ namespace QUERY.Helper
             // agar 4 digit angka
             int nilainya = mulai.Next(1000, 9999);
             return nilainya;
+        }
+
+        public static Object BuatResponAPI(int status, string message, Object data)
+        {
+            return new
+            {
+                status,
+                message,
+                data
+            };
         }
     }
 }
