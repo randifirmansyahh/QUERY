@@ -99,14 +99,14 @@ namespace QUERY.Controllers
         }
 
         [HttpPost]
-        public string KirimEmailOTP(string emailTujuan)
+        public object KirimEmailOTP(string emailTujuan)
         {
             // cari email ke database
             var cariEmail = _context.Tb_User.FirstOrDefault(x => x.Email == emailTujuan);
 
             // pengecekan email
             // != null berarti email ditemukan
-            if (cariEmail != null) return "Email tersebut sudah digunakan";
+            if (cariEmail != null) return new { result = false, message = "Email " + emailTujuan + " sudah terdaftar" };
 
             BanyakBantuan _bantu = new();
             _OTP = _bantu.BuatOTP(); // dari helper, dan memasukan ke variable _OTP diatas
@@ -124,10 +124,10 @@ namespace QUERY.Controllers
             bool cek = _email.KirimEmail(emailTujuan, subjeknya, isiEmailnya); // return nya true atau false
 
             // cek jika true
-            if (cek) return "Kode OTP berhasil dikirimkan ke " + emailTujuan;
+            if (cek) return new { result = true, message = "Email berhasil dikirimkan ke " + emailTujuan };
 
             // jika false
-            return "Email " + emailTujuan + " tidak ditemukan";
+            return new { result = false, message = "Email " + emailTujuan + " tidak ditemukan" };
         }
     }
 }

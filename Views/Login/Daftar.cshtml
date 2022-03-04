@@ -82,7 +82,13 @@
         $(document).ready(function () {
             $("#email-btn").click(function (e) {
 
-                alert("Sedang mengirimkan email, Mohon tunggu")
+                // alert
+                swal({
+                    title: "Mohon Tunggu",
+                    text: "Sedang mengirim email",
+                    icon: "info",
+                    button: "Baik",
+                });
 
                 // method post
                 // NamaController/NamaFunction
@@ -92,7 +98,14 @@
                         emailTujuan : ambilNilai()
                     },
                     function (returnya) {
-                        alert(returnya)
+                        // alert
+                        swal({
+                            title: returnya.result == true ? "Sukses" : "Gagal",
+                            text: returnya.message,
+                            icon: returnya.result == true ? "success" : "error",
+                            button: "Baik",
+                            closeOnClickOutside: false,
+                        });
                     });
             })
         })
