@@ -23,6 +23,8 @@ namespace QUERY.Controllers
         // return view UntukValidasi dengan arrow function
         public IActionResult UntukFormValidasi() => View();
 
+        public IActionResult FromAPI() => View();
+
         [HttpPost]
         public IActionResult UntukFormValidasi(ContohModelUntukValidasi data)
         {
