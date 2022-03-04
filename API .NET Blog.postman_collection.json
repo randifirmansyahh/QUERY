@@ -48,7 +48,7 @@
 							"_postman_previewlanguage": "json",
 							"header": null,
 							"cookie": [],
-							"body": "{\r\n    \"status\": 200,\r\n    \"message\": \"Berhasil ambil data Blog\",\r\n    \"data\": [\r\n        {\r\n            \"id\": \"37b3c040-0d15-465c-b01d-62bbbbeb7df7\",\r\n            \"title\": \"su\",\r\n            \"content\": \"<p>suhh</p>\",\r\n            \"createDate\": \"2022-03-04T05:46:18\",\r\n            \"status\": false,\r\n            \"image\": \"/namaFoldernya/Barcode129.PNG\",\r\n            \"user\": {\r\n                \"username\": \"r\",\r\n                \"password\": \"123\",\r\n                \"name\": \"Randi Firmansyah\",\r\n                \"email\": \"ra@gmail.com\",\r\n                \"roles\": {\r\n                    \"id\": \"2\",\r\n                    \"name\": \"User\"\r\n                }\r\n            }\r\n        },\r\n        {\r\n            \"id\": \"46796620-d28c-4ffd-af0c-cee46c436682\",\r\n            \"title\": \"h\",\r\n            \"content\": \"<p>h</p>\",\r\n            \"createDate\": \"2022-03-04T05:46:29\",\r\n            \"status\": false,\r\n            \"image\": \"\",\r\n            \"user\": {\r\n                \"username\": \"r\",\r\n                \"password\": \"123\",\r\n                \"name\": \"Randi Firmansyah\",\r\n                \"email\": \"ra@gmail.com\",\r\n                \"roles\": {\r\n                    \"id\": \"2\",\r\n                    \"name\": \"User\"\r\n                }\r\n            }\r\n        },\r\n        {\r\n            \"id\": \"d5babc6a-803d-4cd1-90e1-0aa03fa2f5f5\",\r\n            \"title\": \"g\",\r\n            \"content\": \"<p><b>gggg</b></p>\",\r\n            \"createDate\": \"2022-03-04T05:44:38\",\r\n            \"status\": false,\r\n            \"image\": \"/namaFoldernya/jkt bandung.PNG\",\r\n            \"user\": {\r\n                \"username\": \"r\",\r\n                \"password\": \"123\",\r\n                \"name\": \"Randi Firmansyah\",\r\n                \"email\": \"ra@gmail.com\",\r\n                \"roles\": {\r\n                    \"id\": \"2\",\r\n                    \"name\": \"User\"\r\n                }\r\n            }\r\n        },\r\n        {\r\n            \"id\": \"df860f28-ded4-4a5b-955f-89fef9ab9e2c\",\r\n            \"title\": \"su\",\r\n            \"content\": \"<p>su</p>\",\r\n            \"createDate\": \"2022-03-04T05:45:58\",\r\n            \"status\": false,\r\n            \"image\": \"/namaFoldernya/Barcode129.PNG\",\r\n            \"user\": {\r\n                \"username\": \"r\",\r\n                \"password\": \"123\",\r\n                \"name\": \"Randi Firmansyah\",\r\n                \"email\": \"ra@gmail.com\",\r\n                \"roles\": {\r\n                    \"id\": \"2\",\r\n                    \"name\": \"User\"\r\n                }\r\n            }\r\n        },\r\n        {\r\n            \"id\": \"e4c450e1-c8fc-4915-bc9a-fb1316c38b8c\",\r\n            \"title\": \"ih\",\r\n            \"content\": \"ccc\",\r\n            \"createDate\": \"2022-03-03T00:57:00\",\r\n            \"status\": true,\r\n            \"image\": \"/namaFoldernya/Barcode1172.PNG\",\r\n            \"user\": {\r\n                \"username\": \"randi\",\r\n                \"password\": \"123\",\r\n                \"name\": \"Randi Firmansyah\",\r\n                \"email\": \"r@gmail.com\",\r\n                \"roles\": {\r\n                    \"id\": \"1\",\r\n                    \"name\": \"Admin\"\r\n                }\r\n            }\r\n        },\r\n        {\r\n            \"id\": \"ecea6697-b995-45f2-a081-c8523592b891\",\r\n            \"title\": \"j\",\r\n            \"content\": \"<p>jh</p>\",\r\n            \"createDate\": \"2022-03-04T05:46:46\",\r\n            \"status\": false,\r\n            \"image\": \"\",\r\n            \"user\": {\r\n                \"username\": \"r\",\r\n                \"password\": \"123\",\r\n                \"name\": \"Randi Firmansyah\",\r\n                \"email\": \"ra@gmail.com\",\r\n                \"roles\": {\r\n                    \"id\": \"2\",\r\n                    \"name\": \"User\"\r\n                }\r\n            }\r\n        }\r\n    ]\r\n}"
+							"body": "{\r\n    \"status\": \"SUKSES\",\r\n    \"respon_code\": 200,\r\n    \"message\": \"Berhasil ambil data Blog\",\r\n    \"data\": [\r\n        {\r\n            \"id\": \"37b3c040-0d15-465c-b01d-62bbbbeb7df7\",\r\n            \"title\": \"su\",\r\n            \"content\": \"<p>suhh</p>\",\r\n            \"createDate\": \"2022-03-04T05:46:18\",\r\n            \"status\": false,\r\n            \"image\": \"/namaFoldernya/Barcode129.PNG\",\r\n            \"user\": {\r\n                \"username\": \"r\",\r\n                \"password\": \"123\",\r\n                \"name\": \"Randi Firmansyah\",\r\n                \"email\": \"ra@gmail.com\",\r\n                \"roles\": {\r\n                    \"id\": \"2\",\r\n                    \"name\": \"User\"\r\n                }\r\n            }\r\n        },\r\n        {\r\n            \"id\": \"46796620-d28c-4ffd-af0c-cee46c436682\",\r\n            \"title\": \"h\",\r\n            \"content\": \"<p>h</p>\",\r\n            \"createDate\": \"2022-03-04T05:46:29\",\r\n            \"status\": false,\r\n            \"image\": \"\",\r\n            \"user\": {\r\n                \"username\": \"r\",\r\n                \"password\": \"123\",\r\n                \"name\": \"Randi Firmansyah\",\r\n                \"email\": \"ra@gmail.com\",\r\n                \"roles\": {\r\n                    \"id\": \"2\",\r\n                    \"name\": \"User\"\r\n                }\r\n            }\r\n        },\r\n        {\r\n            \"id\": \"d5babc6a-803d-4cd1-90e1-0aa03fa2f5f5\",\r\n            \"title\": \"g\",\r\n            \"content\": \"<p><b>gggg</b></p>\",\r\n            \"createDate\": \"2022-03-04T05:44:38\",\r\n            \"status\": false,\r\n            \"image\": \"/namaFoldernya/jkt bandung.PNG\",\r\n            \"user\": {\r\n                \"username\": \"r\",\r\n                \"password\": \"123\",\r\n                \"name\": \"Randi Firmansyah\",\r\n                \"email\": \"ra@gmail.com\",\r\n                \"roles\": {\r\n                    \"id\": \"2\",\r\n                    \"name\": \"User\"\r\n                }\r\n            }\r\n        },\r\n        {\r\n            \"id\": \"df860f28-ded4-4a5b-955f-89fef9ab9e2c\",\r\n            \"title\": \"su\",\r\n            \"content\": \"<p>su</p>\",\r\n            \"createDate\": \"2022-03-04T05:45:58\",\r\n            \"status\": false,\r\n            \"image\": \"/namaFoldernya/Barcode129.PNG\",\r\n            \"user\": {\r\n                \"username\": \"r\",\r\n                \"password\": \"123\",\r\n                \"name\": \"Randi Firmansyah\",\r\n                \"email\": \"ra@gmail.com\",\r\n                \"roles\": {\r\n                    \"id\": \"2\",\r\n                    \"name\": \"User\"\r\n                }\r\n            }\r\n        },\r\n        {\r\n            \"id\": \"e4c450e1-c8fc-4915-bc9a-fb1316c38b8c\",\r\n            \"title\": \"ih\",\r\n            \"content\": \"ccc\",\r\n            \"createDate\": \"2022-03-03T00:57:00\",\r\n            \"status\": true,\r\n            \"image\": \"/namaFoldernya/Barcode1172.PNG\",\r\n            \"user\": {\r\n                \"username\": \"randi\",\r\n                \"password\": \"123\",\r\n                \"name\": \"Randi Firmansyah\",\r\n                \"email\": \"r@gmail.com\",\r\n                \"roles\": {\r\n                    \"id\": \"1\",\r\n                    \"name\": \"Admin\"\r\n                }\r\n            }\r\n        },\r\n        {\r\n            \"id\": \"ecea6697-b995-45f2-a081-c8523592b891\",\r\n            \"title\": \"j\",\r\n            \"content\": \"<p>jh</p>\",\r\n            \"createDate\": \"2022-03-04T05:46:46\",\r\n            \"status\": false,\r\n            \"image\": \"\",\r\n            \"user\": {\r\n                \"username\": \"r\",\r\n                \"password\": \"123\",\r\n                \"name\": \"Randi Firmansyah\",\r\n                \"email\": \"ra@gmail.com\",\r\n                \"roles\": {\r\n                    \"id\": \"2\",\r\n                    \"name\": \"User\"\r\n                }\r\n            }\r\n        }\r\n    ]\r\n}"
 						},
 						{
 							"name": "ContohBlogTidakAda",
@@ -71,7 +71,7 @@
 							"_postman_previewlanguage": "json",
 							"header": null,
 							"cookie": [],
-							"body": "{\r\n    \"status\" : 200,\r\n    \"message\":\"Tidak ada blog ditemukan\",\r\n    \"data\":null\r\n}"
+							"body": "{\r\n    \"status\": \"SUKSES\",\r\n    \"respon_code\": 200,\r\n    \"message\":\"Tidak ada blog ditemukan\",\r\n    \"data\":null\r\n}"
 						}
 					]
 				},
@@ -141,7 +141,7 @@
 							"_postman_previewlanguage": "json",
 							"header": null,
 							"cookie": [],
-							"body": "{\n    \"status\": 200,\n    \"message\": \"Berhasil ambil data Blog\",\n    \"data\": {\n        \"id\": \"e4c450e1-c8fc-4915-bc9a-fb1316c38b8c\",\n        \"title\": \"cek\",\n        \"content\": \"cek\",\n        \"createDate\": \"2022-03-03T00:57:00\",\n        \"status\": false,\n        \"image\": \"/namaFoldernya/Barcode129.PNG\",\n        \"user\": {\n            \"username\": \"randi\",\n            \"password\": \"123\",\n            \"name\": \"Randi Firmansyah\",\n            \"email\": \"r@gmail.com\",\n            \"roles\": {\n                \"id\": \"1\",\n                \"name\": \"Admin\"\n            }\n        }\n    }\n}"
+							"body": "{\n    \"status\": \"SUKSES\",\n    \"respon_code\": 200,\n    \"message\": \"Berhasil ambil data Blog\",\n    \"data\": {\n        \"id\": \"1\",\n        \"title\": \"judulnya\",\n        \"content\": \"kontennya\",\n        \"createDate\": \"2022-03-04T06:40:58\",\n        \"status\": true,\n        \"image\": \"https://avatars.githubusercontent.com/u/87772215?v=4\",\n        \"user\": null\n    }\n}"
 						},
 						{
 							"name": "ContohTidakAda",
@@ -176,7 +176,7 @@
 							"_postman_previewlanguage": "json",
 							"header": null,
 							"cookie": [],
-							"body": "{\n    \"status\": 400,\n    \"message\": \"Data Blog tidak ditemukan\",\n    \"data\": null\n}"
+							"body": "{\n    \"status\": \"GAGAL\",\n    \"respon_code\": 400,\n    \"message\": \"Data Blog tidak ditemukan\",\n    \"data\": null\n}"
 						}
 					]
 				},
@@ -270,7 +270,7 @@
 							"_postman_previewlanguage": "json",
 							"header": null,
 							"cookie": [],
-							"body": "{\n    \"status\": 200,\n    \"message\": \"Berhasil menambah data Blog\",\n    \"data\": {\n        \"id\": \"4206dc7f-b8c6-455c-be63-7719d580ff0d\",\n        \"title\": \"ini\",\n        \"content\": \"ini\",\n        \"createDate\": \"2022-03-04T05:02:25.927764+07:00\",\n        \"status\": true,\n        \"image\": \"/namaFoldernya/3.2.PNG\",\n        \"user\": null\n    }\n}"
+							"body": "{\n    \"status\": \"SUKSES\",\n    \"respon_code\": 200,\n    \"message\": \"Berhasil menambah data Blog\",\n    \"data\": {\n        \"id\": \"4206dc7f-b8c6-455c-be63-7719d580ff0d\",\n        \"title\": \"ini\",\n        \"content\": \"ini\",\n        \"createDate\": \"2022-03-04T05:02:25.927764+07:00\",\n        \"status\": true,\n        \"image\": \"/namaFoldernya/3.2.PNG\",\n        \"user\": null\n    }\n}"
 						},
 						{
 							"name": "ContohGagal",
@@ -318,7 +318,7 @@
 							"_postman_previewlanguage": "json",
 							"header": null,
 							"cookie": [],
-							"body": "{\n    \"status\": 400,\n    \"message\": \"Inputan untuk data Blog salah\",\n    \"data\": null\n}"
+							"body": "{\n    \"status\": \"GAGAL\",\n    \"respon_code\": 400,\n    \"message\": \"Inputan untuk data Blog salah\",\n    \"data\": null\n}"
 						}
 					]
 				},
@@ -435,10 +435,10 @@
 									]
 								}
 							},
-							"_postman_previewlanguage": null,
+							"_postman_previewlanguage": "json",
 							"header": null,
 							"cookie": [],
-							"body": null
+							"body": "{\n    \"status\": \"SUKSES\",\n    \"respon_code\": 200,\n    \"message\": \"Berhasil ubah data Blog\",\n    \"data\": {\n        \"id\": \"e4c450e1-c8fc-4915-bc9a-fb1316c38b8c\",\n        \"title\": \"p\",\n        \"content\": \"p\",\n        \"createDate\": \"2022-03-03T00:57:00\",\n        \"status\": true,\n        \"image\": \"/namaFoldernya/Barcode1172.PNG\",\n        \"user\": {\n            \"username\": \"randi\",\n            \"password\": \"123\",\n            \"name\": \"Randi Firmansyah\",\n            \"email\": \"r@gmail.com\",\n            \"roles\": {\n                \"id\": \"1\",\n                \"name\": \"Admin\"\n            }\n        }\n    }\n}"
 						},
 						{
 							"name": "ContohGagal",
@@ -502,7 +502,7 @@
 							"_postman_previewlanguage": "json",
 							"header": null,
 							"cookie": [],
-							"body": "{\n    \"status\": 500,\n    \"message\": \"Data Blog tidak ditemukan\",\n    \"data\": null\n}"
+							"body": "{\n    \"status\": \"GAGAL\",\n    \"respon_code\": 500,\n    \"message\": \"Data Blog tidak ditemukan\",\n    \"data\": null\n}"
 						},
 						{
 							"name": "ContohInputanSalah",
@@ -566,7 +566,7 @@
 							"_postman_previewlanguage": "json",
 							"header": null,
 							"cookie": [],
-							"body": "{\n    \"status\": 400,\n    \"message\": \"Inputan untuk data Blog salah\",\n    \"data\": null\n}"
+							"body": "{\n    \"status\": \"SUKSES\",\n    \"respon_code\": 400,\n    \"message\": \"Inputan untuk data Blog salah\",\n    \"data\": null\n}"
 						}
 					]
 				},
@@ -597,30 +597,6 @@
 					},
 					"response": [
 						{
-							"name": "ContohGagal",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "http://{{URL}}/api/home/blog/7b7e9043-a2c8-4d19-9882-d40001f678ae",
-									"protocol": "http",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"api",
-										"home",
-										"blog",
-										"7b7e9043-a2c8-4d19-9882-d40001f678ae"
-									]
-								}
-							},
-							"_postman_previewlanguage": "json",
-							"header": null,
-							"cookie": [],
-							"body": "{\n    \"status\": 500,\n    \"message\": \"Data Blog tidak ditemukan\",\n    \"data\": null\n}"
-						},
-						{
 							"name": "ContohBerhasil",
 							"originalRequest": {
 								"method": "DELETE",
@@ -642,7 +618,31 @@
 							"_postman_previewlanguage": "json",
 							"header": null,
 							"cookie": [],
-							"body": "{\n    \"status\": 200,\n    \"message\": \"Berhasil hapus data Blog\",\n    \"data\": {\n        \"id\": \"46796620-d28c-4ffd-af0c-cee46c436682\",\n        \"title\": \"h\",\n        \"content\": \"<p>h</p>\",\n        \"createDate\": \"2022-03-04T05:46:29\",\n        \"status\": false,\n        \"image\": \"\",\n        \"user\": {\n            \"username\": \"r\",\n            \"password\": \"123\",\n            \"name\": \"Randi Firmansyah\",\n            \"email\": \"ra@gmail.com\",\n            \"roles\": {\n                \"id\": \"2\",\n                \"name\": \"User\"\n            }\n        }\n    }\n}"
+							"body": "{\n    \"status\": \"SUKSES\",\n    \"respon_code\": 200,\n    \"message\": \"Berhasil hapus data Blog\",\n    \"data\": {\n        \"id\": \"46796620-d28c-4ffd-af0c-cee46c436682\",\n        \"title\": \"h\",\n        \"content\": \"<p>h</p>\",\n        \"createDate\": \"2022-03-04T05:46:29\",\n        \"status\": false,\n        \"image\": \"\",\n        \"user\": {\n            \"username\": \"r\",\n            \"password\": \"123\",\n            \"name\": \"Randi Firmansyah\",\n            \"email\": \"ra@gmail.com\",\n            \"roles\": {\n                \"id\": \"2\",\n                \"name\": \"User\"\n            }\n        }\n    }\n}"
+						},
+						{
+							"name": "ContohGagal",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://{{URL}}/api/home/blog/7b7e9043-a2c8-4d19-9882-d40001f678ae",
+									"protocol": "http",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"home",
+										"blog",
+										"7b7e9043-a2c8-4d19-9882-d40001f678ae"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"status\": \"GAGAL\",\n    \"respon_code\": 500,\n    \"message\": \"Data Blog tidak ditemukan\",\n    \"data\": null\n}"
 						}
 					]
 				}

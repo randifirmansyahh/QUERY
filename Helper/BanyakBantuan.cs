@@ -18,11 +18,12 @@ namespace QUERY.Helper
             return nilainya;
         }
 
-        public Object BuatResponAPI(int status, string message, Object data)
+        public Object BuatResponAPI(int respon_code, string message, Object data)
         {
             return new
             {
-                status,
+                status = respon_code == 200 ? "SUKSES" : "GAGAL",
+                respon_code,
                 message,
                 data
             };
