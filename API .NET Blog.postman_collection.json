@@ -88,7 +88,7 @@
 							"urlencoded": []
 						},
 						"url": {
-							"raw": "http://{{URL}}/api/home/blog/e4c450e1-c8fc-4915-bc9a-fb1316c38b8c",
+							"raw": "http://{{URL}}/api/home/blog/:id",
 							"protocol": "http",
 							"host": [
 								"{{URL}}"
@@ -97,13 +97,12 @@
 								"api",
 								"home",
 								"blog",
-								"e4c450e1-c8fc-4915-bc9a-fb1316c38b8c"
+								":id"
 							],
-							"query": [
+							"variable": [
 								{
-									"key": "",
-									"value": null,
-									"disabled": true
+									"key": "id",
+									"value": "1"
 								}
 							]
 						}
@@ -338,7 +337,7 @@
 								},
 								{
 									"key": "Title",
-									"value": "p",
+									"value": "",
 									"type": "text"
 								},
 								{
@@ -355,12 +354,6 @@
 									"key": "Status",
 									"value": "true",
 									"type": "text"
-								},
-								{
-									"key": "",
-									"value": "",
-									"type": "text",
-									"disabled": true
 								}
 							],
 							"options": {
@@ -583,7 +576,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://{{URL}}/api/home/blog/7b7e9043-a2c8-4d19-9882-d40001f678ae",
+							"raw": "http://{{URL}}/api/home/blog/:id",
 							"protocol": "http",
 							"host": [
 								"{{URL}}"
@@ -592,7 +585,13 @@
 								"api",
 								"home",
 								"blog",
-								"7b7e9043-a2c8-4d19-9882-d40001f678ae"
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7b7e9043-a2c8-4d19-9882-d40001f678ae"
+								}
 							]
 						}
 					},
@@ -712,6 +711,12 @@
 					"response": []
 				}
 			]
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
 		}
 	]
 }
