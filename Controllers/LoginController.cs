@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QUERY.Data;
@@ -43,7 +44,7 @@ namespace QUERY.Controllers
             {
                 var claims = new List<Claim> {
                     new Claim("Username", cariUser.Username),
-                    new Claim("Role", cariUser.Roles.Id)
+                    new Claim("Role", cariUser.Roles.Name)
                 };
 
                 await HttpContext.SignInAsync(new ClaimsPrincipal(

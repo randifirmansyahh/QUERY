@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QUERY.Areas.User.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "User")]
     [Area("User")]
     public class HomeController : Controller
     {

@@ -37,11 +37,12 @@ namespace QUERY
                 .AddCookie("CookieAuth", options =>
                 {
                     options.LoginPath = "/Login/Index";
+                    options.AccessDeniedPath = "/Home/Dilarang";
                 });
 
             // daftarkan repo dan service disini
             // repository
-            services.AddScoped<IBlogRepository,BlogRepository>();
+            services.AddScoped<IBlogRepository, BlogRepository>();
 
             // service
             services.AddScoped<IBlogService, BlogService>();
