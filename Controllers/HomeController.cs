@@ -25,6 +25,8 @@ namespace QUERY.Controllers
 
         public IActionResult FromAPI() => View();
 
+        public IActionResult Lokasi() => View();
+
         [HttpPost]
         public IActionResult UntukFormValidasi(ContohModelUntukValidasi data)
         {
