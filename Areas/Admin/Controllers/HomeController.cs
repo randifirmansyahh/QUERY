@@ -19,14 +19,23 @@ namespace QUERY.Areas.Admin.Controllers
     public class HomeController : Controller
     {
         private readonly IBlogService _service;
+        
+        // link dilarang
+        private string _dilarang = "/Home/Dilarang";
 
         public HomeController(IBlogService b)
         {
             _service = b;
         }
 
+        // fungsi untuk cek role
+        public bool CekRolenya() => User.GetRole() == "1";
+
         public IActionResult Index()
         {
+            // cek dulu role nya
+            if (!CekRolenya()) return Redirect(_dilarang);
+            
             var banyakData = new BlogDashboard(); // dari model Blog
 
             banyakData.blog = _service.AmbilSemuaBlog();

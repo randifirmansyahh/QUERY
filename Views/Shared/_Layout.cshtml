@@ -73,7 +73,7 @@
                         if (username != "")
                         {
                             <b>@User.GetUsername() &nbsp;</b>
-                            <a href="@Url.Action("Logout", "Login", new { id = "" })"
+                            <a href="/login/logout"
                                class="bi bi-box-arrow-right" title="Keluar" style="color:red"
                                onclick="if (! confirm('\n\nYakin untuk keluar akun ?')) { return false; }">
                             </a>
